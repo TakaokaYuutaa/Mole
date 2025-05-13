@@ -31,8 +31,10 @@ public class Mole_InOut : MonoBehaviour
         gamePlay = false;
     }
     async UniTask RandomDelay()
-    { 
-        await UniTask.Delay(Random.Range(50,100) * 100);
+    {
+        int delayTimeX = 50;
+        int delayTimeY = 100;
+        await UniTask.Delay(Random.Range(delayTimeX,delayTimeY) * 100);
         AdventMole(molesPos);
     }
     void AdventMole(float molePos)
@@ -43,6 +45,7 @@ public class Mole_InOut : MonoBehaviour
             pos.x = Random.Range(-1, 2) * molePos;
             pos.y = Random.Range(-1, 2) * molePos;
             _mole.gameObject.transform.position = new Vector3(pos.x, -5, pos.y);
+            //‚Ç‚¤‚É‚©–@‘¥Œ©‚Â‚¯‚½‚¢«
             if (pos.x > 0 && pos.y > 0 && judgMolesOut[0] == false)
             {
                 judgMolesOut[0] = true;
