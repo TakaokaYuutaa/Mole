@@ -22,7 +22,6 @@ public class Mole_InOut : MonoBehaviour
     }
     private void Update()
     {
-        AdventMole(molesPos);
         var _ = RandomDelay();
     }
     async UniTask TimerStart()
@@ -32,71 +31,77 @@ public class Mole_InOut : MonoBehaviour
         gamePlay = false;
     }
     async UniTask RandomDelay()
-    {
-        await UniTask.Delay(Random.Range(3, 15) * 100);
+    { 
+        await UniTask.Delay(Random.Range(50,100) * 100);
+        AdventMole(molesPos);
     }
     void AdventMole(float molePos)
     {
         if (gamePlay)
         {
             Vector2 pos;
-            pos.x = Random.Range(-1, 1) * molePos;
-            pos.y = Random.Range(-1, 1) * molePos;
+            pos.x = Random.Range(-1, 2) * molePos;
+            pos.y = Random.Range(-1, 2) * molePos;
             _mole.gameObject.transform.position = new Vector3(pos.x, -5, pos.y);
             if (pos.x > 0 && pos.y > 0 && judgMolesOut[0] == false)
             {
                 judgMolesOut[0] = true;
-                GameObject Mole = Instantiate(_mole);
+                AddMole();
                 holeNo = 0;
             }
             if (pos.x == 0 && pos.y > 0 && judgMolesOut[1] == false)
             {
                 judgMolesOut[1] = true;
-                GameObject Mole = Instantiate(_mole);
+                AddMole(); 
                 holeNo = 1;
             }
             if (pos.x < 0 && pos.y > 0 && judgMolesOut[2] == false)
             {
                 judgMolesOut[2] = true;
-                GameObject Mole = Instantiate(_mole);
+                AddMole();
                 holeNo = 2;
             }
             if (pos.x > 0 && pos.y == 0 && judgMolesOut[3] == false)
             {
                 judgMolesOut[3] = true;
-                GameObject Mole = Instantiate(_mole);
+                AddMole();
                 holeNo = 3;
             }
             if (pos.x == 0 && pos.y == 0 && judgMolesOut[4] == false)
             {
                 judgMolesOut[4] = true;
-                GameObject Mole = Instantiate(_mole);
+                AddMole();
                 holeNo = 4;
             }
             if (pos.x < 0 && pos.y == 0 && judgMolesOut[5] == false)
             {
                 judgMolesOut[5] = true;
-                GameObject Mole = Instantiate(_mole);
+                AddMole();
                 holeNo = 5;
             }
             if (pos.x > 0 && pos.y < 0 && judgMolesOut[6] == false)
             {
                 judgMolesOut[6] = true;
-                GameObject Mole = Instantiate(_mole);
+                AddMole();
                 holeNo = 6;
             }
             if (pos.x == 0 && pos.y < 0 && judgMolesOut[7] == false)
             {
                 judgMolesOut[7] = true;
-                GameObject Mole = Instantiate(_mole);
+                AddMole();
                 holeNo = 7;
             }
             if (pos.x < 0 && pos.y < 0 && judgMolesOut[8] == false)
             {
                 judgMolesOut[8] = true;
-                GameObject Mole = Instantiate(_mole);
+                AddMole();
                 holeNo = 8;
             }
         }
+    }
+    void AddMole()
+    {
+        GameObject Mole = Instantiate(_mole);
+        Mole.SetActive(true);
     }
 }
