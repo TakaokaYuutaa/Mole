@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MoleProgram : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] Mole_InOut _inOut;
     void Start()
     {
-        
+       
     }
-
-    // Update is called once per frame
-    void Update()
+    void OnMouseDown()
     {
-        
+        _inOut.judgMolesOut[_inOut.holeNo] = false;
+        Destroy(this);
+    }
+    async UniTask MoleAction()
+    {
+
+        await UniTask.Delay(800);
     }
 }
