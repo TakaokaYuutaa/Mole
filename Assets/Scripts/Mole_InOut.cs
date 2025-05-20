@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Mole_InOut : MonoBehaviour
 {
     [SerializeField] GameObject _mole;
+    [SerializeField] Text _finish;
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioClip _whistle;
     public int holeNo;
     public List<bool> judgMolesOut = new()
     {
@@ -29,6 +33,8 @@ public class Mole_InOut : MonoBehaviour
         gamePlay = true;
         await UniTask.Delay(timer * 1000);
         gamePlay = false;
+        _finish.gameObject.SetActive(true);
+        _audioSource.PlayOneShot(_whistle);
     }
     async UniTask RandomDelay()
     {
