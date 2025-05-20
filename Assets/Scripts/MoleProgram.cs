@@ -18,17 +18,21 @@ public class MoleProgram : MonoBehaviour
     }
     void OnMouseDown()
     {
-        _inOut.judgMolesOut[moleholeNo] = false;
-        _score.MoleKill(moleKillPoint);
-        Destroy(this.gameObject);
+        if (_inOut.gamePlay)
+        {
+            _inOut.judgMolesOut[moleholeNo] = false;
+            _score.MoleKill(moleKillPoint);
+            Destroy(this.gameObject);
+        }
     }
     async UniTask MoleAction(CancellationToken cancel)
     {
         float moveTime = 0.8f;
+        int inTimer = 3, outTimer = 8, inMagnification = 1000, outMagnification = 100;
         this.transform.DOMoveY(5, moveTime).SetRelative();
-        await UniTask.Delay(3000, cancellationToken: cancel);
+        await UniTask.Delay(inTimer*inMagnification, cancellationToken: cancel);
         this.transform.DOMoveY(-5, moveTime).SetRelative();
-        await UniTask.Delay(800, cancellationToken: cancel);
+        await UniTask.Delay(outTimer*outMagnification, cancellationToken: cancel);
         _inOut.judgMolesOut[moleholeNo] = false;
         Destroy(this.gameObject);
     }

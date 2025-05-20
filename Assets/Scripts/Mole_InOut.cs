@@ -17,9 +17,8 @@ public class Mole_InOut : MonoBehaviour
         false, false, false,
         false, false, false,
     };
-    int timer = 60;
     float molesPostion = 9;
-    bool gamePlay;
+    public bool gamePlay;
     private void Start()
     {
         var _ = TimerStart();
@@ -30,17 +29,17 @@ public class Mole_InOut : MonoBehaviour
     }
     async UniTask TimerStart()
     {
+        int timer = 60, magnification = 1000;
         gamePlay = true;
-        await UniTask.Delay(timer * 1000);
+        await UniTask.Delay(timer * magnification);
         gamePlay = false;
         _finish.gameObject.SetActive(true);
         _audioSource.PlayOneShot(_whistle);
     }
     async UniTask RandomDelay()
     {
-        int delayTimeX = 50;
-        int delayTimeY = 50;
-        await UniTask.Delay(Random.Range(delayTimeX, delayTimeY) * 100);
+        int delayTimeX = 50, delayTimeY = 50, delayMagnification = 100;
+        await UniTask.Delay(Random.Range(delayTimeX, delayTimeY) * delayMagnification);
         AdventMole(molesPostion);
     }
     void AdventMole(float molePos)

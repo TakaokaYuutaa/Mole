@@ -418,6 +418,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _score: {fileID: 1345870317}
+  _audioSource: {fileID: 42418204}
+  _audioClip: {fileID: 8300000, guid: 41558e7d7b5fb1c408dc85f0cf88cd1f, type: 3}
 --- !u!4 &209565488
 Transform:
   m_ObjectHideFlags: 0
