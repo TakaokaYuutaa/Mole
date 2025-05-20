@@ -21,12 +21,15 @@ public class MoleProgram : MonoBehaviour
     }
     async UniTask MoleAction()
     {
-        float moveTime = 0.8f;
-        this.transform.DOMoveY(5, moveTime).SetRelative();
-        await UniTask.Delay(3000);
-        this.transform.DOMoveY(-5,moveTime).SetRelative();
-        await UniTask.Delay(800);
-        _inOut.judgMolesOut[moleholeNo] = false;
-        Destroy(this.gameObject);
+        float moveTime = 0.8f;    
+        if (this!= null)
+        {
+            this.transform.DOMoveY(5, moveTime).SetRelative();
+            await UniTask.Delay(3000);
+            this.transform.DOMoveY(-5, moveTime).SetRelative();
+            await UniTask.Delay(800);
+            _inOut.judgMolesOut[moleholeNo] = false;
+            Destroy(this.gameObject);
+        }
     }
 }
