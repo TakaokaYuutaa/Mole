@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System.Threading;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MoleProgram : MonoBehaviour
 {
